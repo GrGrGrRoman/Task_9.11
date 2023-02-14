@@ -73,7 +73,7 @@ const personGenerator = {
             "id_2": "няня",
             "id_3": "швея",
             "id_4": "косметолог",
-            "id_5": "учительница",
+            "id_5": "студентка",
             "id_6": "официантка",
             "id_7": "портная",
             "id_8": "стюардесса",
@@ -152,41 +152,25 @@ const personGenerator = {
         }
             return this.randomValue(this.maleJobJson);
     },
-
-// генератор даты рождения, зависит от месяца
-/*     randomBirthDay: function(birthMonth) {
-        if (birthMonth == "февраля") {
-        console.log("февраль");
-        return this.randomIntNumber(1, 2);
-    }
-        else if (birthMonth == "апреля" || "июня" || "сентября" || "ноября") {
-        console.log("30");
-        return this.randomIntNumber(3,4);
-    }
-        console.log("31");
-        return this.randomIntNumber(5,6);
-    },
- */
-
+// генератор месяца и дня рождения
     randomBirthDay: function () {
         let month = this.randomValue(this.birthMonthJson);
         let day = this.randomIntNumber();
-        if (month === "февраля") {
+        if (month == "февраля") {
             console.log("февраль");
             day = this.randomIntNumber(28, 1);
-        } else if (month === "апреля" || "июня" || "сентября" || "ноября") {
+        } else if (month == "апреля" || "июня" || "сентября" || "ноября") {
             console.log("30"); 
             day = this.randomIntNumber(30, 1);
-        } else {
+        } else  if (month == "января" || "марта" || "мая" || "июля" || "августа" || "октября" || "декабря") {
             console.log("31");
-            day = this.randomIntNumber(-5, -10);
+            day = this.randomIntNumber(30, 1);
         }
         return day + ' ' + month;
     },
 
     getPerson: function () {
         let gender = this.randomGender();
-        //let month = this.randomBirthMonth();
         this.person = {};
         this.person.gender = gender; 
         this.person.surName = this.randomSurname(gender);

@@ -17,6 +17,7 @@ window.onload = GRU();
 /* При нажатии кнопки Генерация */
 document.querySelector('#btnGen').addEventListener('click', GRU);
 
+/* Функция очистки значений генерации */
 function clear () {
     document.querySelector('#firstNameOutput').innerText = null;
     document.querySelector('#secondNameOutput').innerText = null;
@@ -27,4 +28,5 @@ function clear () {
     document.querySelector('#birthDayOutput').innerText = null;
 }
 
+/* При нажатии кнопки Сброс */
 document.querySelector('#btnReset').addEventListener('click', clear);
