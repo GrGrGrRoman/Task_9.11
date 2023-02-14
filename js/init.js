@@ -1,5 +1,5 @@
-
-window.onload = function()
+/* Функциональное выражение */
+let GRU = function()
 {
     const initPerson = personGenerator.getPerson();
     document.querySelector('#firstNameOutput').innerText = initPerson.firstName;
@@ -11,3 +11,20 @@ window.onload = function()
     document.querySelector('#birthDayOutput').innerText = initPerson.birthDay;
 };
 
+/* При открытии страницы */
+window.onload = GRU();
+
+/* При нажатии кнопки Генерация */
+document.querySelector('#btnGen').addEventListener('click', GRU);
+
+function clear () {
+    document.querySelector('#firstNameOutput').innerText = null;
+    document.querySelector('#secondNameOutput').innerText = null;
+    document.querySelector('#surnameOutput').innerText = null;
+    document.querySelector('#genderOutput').innerText = null;
+    document.querySelector('#birthYearOutput').innerText = null;
+    document.querySelector('#jobOutput').innerText = null;
+    document.querySelector('#birthDayOutput').innerText = null;
+}
+
+document.querySelector('#btnReset').addEventListener('click', clear);

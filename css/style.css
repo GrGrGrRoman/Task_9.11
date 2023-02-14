@@ -11,7 +11,7 @@
     background-color: pink;
 }
 
-#jobOutput {
+#jobOutput, #genderOutput {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: Verdana, Geneva, Tahoma, sans-serif
