@@ -65,7 +65,6 @@ const personGenerator = {
             "id_10": "водитель"
         }
     }`,
-
     femaleJobJson: `{
         "count": 10,
         "list": {
@@ -81,7 +80,6 @@ const personGenerator = {
             "id_10": "балерина"
         }
     }`,
-
     birthMonthJson: `{
         "count": 12,
         "list": {
@@ -99,8 +97,6 @@ const personGenerator = {
             "id_12": "декабря"
         }
     }`,
-
-
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
 
@@ -125,7 +121,6 @@ const personGenerator = {
         return this.randomValue(this.firstNameFemaleJson);
         }
         return this.randomValue(this.firstNameMaleJson);
-
     },
 // генератор фамилии, зависит от пола
     randomSurname: function(gender) {
@@ -152,25 +147,28 @@ const personGenerator = {
         }
             return this.randomValue(this.maleJobJson);
     },
-// генератор месяца и дня рождения
-    randomBirthDay: function () {
-        let month = this.randomValue(this.birthMonthJson);
-        let day = this.randomIntNumber();
+// генератор месяца рождения
+    randomMonth: function() {
+        return this.randomValue(this.birthMonthJson);
+    },
+// генератор дня рождения, зависит от месяца
+    randomBirthDay: function(month) {
+        let day;
         if (month == "февраля") {
             console.log("февраль");
-            day = this.randomIntNumber(28, 1);
+            day = 28;
         } else if (month == "апреля" || "июня" || "сентября" || "ноября") {
             console.log("30"); 
-            day = this.randomIntNumber(30, 1);
-        } else  if (month == "января" || "марта" || "мая" || "июля" || "августа" || "октября" || "декабря") {
+            day = 30;
+        } else {
             console.log("31");
-            day = this.randomIntNumber(30, 1);
+            day = 31;
         }
-        return day + ' ' + month;
+        return this.randomIntNumber(day, 1) + ' ' + month;
     },
-
     getPerson: function () {
         let gender = this.randomGender();
+        let month = this.randomMonth();
         this.person = {};
         this.person.gender = gender; 
         this.person.surName = this.randomSurname(gender);
@@ -178,7 +176,8 @@ const personGenerator = {
         this.person.secondName = this.randomSecondName(gender);
         this.person.birthYear = this.randomBirthYear();
         this.person.job = this.randomJob(gender);
-        this.person.birthDay = this.randomBirthDay();
+        this.person.birthMonth = month;
+        this.person.birthDay = this.randomBirthDay(month);
         return this.person;
     }
 };
